@@ -1,4 +1,4 @@
-<h1>New User</h1>
+<!--<h1>New User</h1>
 
   <form accept-charset="UTF-8" action="/users" method="post" >
     <label for="user[username]">Username</label> <input id="username" name="user[username]" type="text" /><br />
@@ -8,5 +8,33 @@
     <input type="submit" value="Submit">
   </form> 
     
-    
-<%= link_to 'Back', users_path %>
+<%= link_to 'Back', users_path %>-->
+
+<!--<h1>New User</h1>
+<%= form_tag('/users', method: :post) do %>
+  <label for="username">Username:</label>
+  <%= text_field_tag("username") %><br />
+  <label for="password">Password:</label>
+  <%= password_field_tag('password') %><br />
+  <label for="email">Email:</label>
+  <%= email_field_tag("email") %></br >
+  <%= submit_tag("Submit") %>
+<% end %>-->
+
+<!--<%= form_tag('/users', method: :post) do %>
+  <label for="user[username]">Username:</label>
+  <%= text_field_tag("user[username]") %><br />
+  <label for="user[password]">Password:</label>
+  <%= password_field_tag('user[password]') %><br />
+  <label for="user[email]">Email:</label>
+  <%= email_field_tag("user[email]") %></br >
+  <%= submit_tag("Submit") %>
+<% end %>-->
+
+<h1>New User</h1>
+<%= form_for @user, url: {action: "create"}, html: {class: "nifty_form"} do |f| %>
+  Username: <%= f.text_field :username, placeholder: 'Username'%><br />
+  Password: <%= f.password_field :password, placeholder: 'Password' %><br />
+  Email: <%= f.email_field :email, placeholder: "example@example.com"%><br />
+  <%= f.submit "Submit" %>
+<% end %>
