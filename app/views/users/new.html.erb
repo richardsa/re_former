@@ -33,6 +33,17 @@
 
 <h1>New User</h1>
 <%= form_for @user do |f| %>
+    <% if @user.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@user.errors.count, "error") %> prohibited this from being saved:</h2>
+
+        <ul>
+        <% @user.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
   Username: <%= f.text_field :username, placeholder: 'Username'%><br />
   Password: <%= f.password_field :password, placeholder: 'Password' %><br />
   Email: <%= f.email_field :email, placeholder: "example@example.com"%><br />
